@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayEase | Hotel Room Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">S</span> StayEase</a>
+  <nav><a href="#hotels">Find a stay</a><a href="#bookings">My bookings</a><a href="#admin">Admin</a></nav>
+  <button class="outline-btn" id="profileBtn">Guest profile</button>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">YOUR NEXT STAY STARTS HERE</p>
+    <h1>Make room for<br><span>something wonderful.</span></h1>
+    <p class="hero-copy">Find comfortable stays, compare room options, and keep your trip details in one place.</p>
+    <a class="primary-btn" href="#hotels">Explore hotels <span>→</span></a>
+  </div>
+  <div class="hero-art">
+    <div class="sun"></div><div class="hotel-building"><div class="building-top"></div><div class="windows"></div></div>
+    <div class="plant plant-one">♧</div><div class="plant plant-two">♧</div>
+    <div class="art-label"><span>✦</span><div><b>Stay a little better</b><small>Thoughtful stays, easy booking</small></div></div>
+  </div>
+</section>
+
+<main>
+  <section class="search-panel" aria-label="Hotel search">
+    <div class="field"><label for="destination">Destination or hotel</label><input id="destination" placeholder="Where are you going?"></div>
+    <div class="field"><label for="checkin">Check-in</label><input id="checkin" type="date"></div>
+    <div class="field"><label for="checkout">Check-out</label><input id="checkout" type="date"></div>
+    <div class="field guests-field"><label for="guests">Guests</label><select id="guests"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></div>
+    <button class="primary-btn search-btn" id="searchBtn">Search stays</button>
+  </section>
+
+  <section class="section" id="hotels">
+    <div class="section-heading"><div><p class="eyebrow">HANDPICKED FOR YOU</p><h2>Find your kind of stay</h2></div><span id="resultCount" class="result-count">4 stays available</span></div>
+    <div class="filters">
+      <button class="filter active" data-category="All">All stays</button>
+      <button class="filter" data-category="Luxury">Luxury</button>
+      <button class="filter" data-category="Business">Business</button>
+      <button class="filter" data-category="Budget">Budget</button>
+    </div>
+    <div id="hotelGrid" class="hotel-grid"></div>
+    <p id="emptyState" class="empty-state hidden">No stays match your search. Try another destination or category.</p>
+  </section>
+
+  <section class="section booking-section" id="bookings">
+    <div class="section-heading"><div><p class="eyebrow">YOUR TRIP DETAILS</p><h2>My bookings</h2></div><span class="muted">Manage your reservations</span></div>
+    <div id="bookingList" class="booking-list"><div class="empty-bookings">Your confirmed demo bookings will appear here.</div></div>
+  </section>
+
+  <section class="section admin-section" id="admin">
+    <div class="section-heading"><div><p class="eyebrow">PROPERTY MANAGEMENT</p><h2>Admin panel</h2></div><span class="demo-tag">DEMO</span></div>
+    <p class="admin-note">Use this sample panel to add a hotel listing or remove a listing from the catalog. This demo stores changes in your browser only.</p>
+    <form id="hotelForm" class="admin-form">
+      <div class="field"><label for="hotelName">Hotel name</label><input id="hotelName" required placeholder="e.g. Palm Grove Hotel"></div>
+      <div class="field"><label for="hotelCity">City</label><input id="hotelCity" required placeholder="e.g. Chennai"></div>
+      <div class="field"><label for="hotelPrice">Price per night (₹)</label><input id="hotelPrice" type="number" min="500" required placeholder="3500"></div>
+      <div class="field"><label for="hotelCategory">Room type</label><select id="hotelCategory"><option>Budget</option><option>Business</option><option>Luxury</option></select></div>
+      <button class="primary-btn" type="submit">Add hotel</button>
+    </form>
+  </section>
+</main>
+
+<footer><a class="brand" href="#"><span class="brand-mark">S</span> StayEase</a><p>Find your stay. Make it memorable.</p><small>Student project demo · No real bookings or payments are processed.</small></footer>
+
+<dialog id="bookingDialog">
+  <form id="bookingForm" method="dialog" class="dialog-content">
+    <button class="close-btn" type="button" id="closeDialog" aria-label="Close">×</button>
+    <p class="eyebrow">RESERVE YOUR ROOM</p>
+    <h2 id="dialogHotelName">Hotel name</h2>
+    <p id="dialogHotelMeta" class="muted"></p>
+    <input type="hidden" id="selectedHotelId">
+    <div class="field"><label for="guestName">Full name</label><input id="guestName" required placeholder="Enter your name"></div>
+    <div class="field"><label for="guestEmail">Email address</label><input id="guestEmail" type="email" required placeholder="you@example.com"></div>
+    <div class="form-row">
+      <div class="field"><label for="bookCheckin">Check-in</label><input id="bookCheckin" type="date" required></div>
+      <div class="field"><label for="bookCheckout">Check-out</label><input id="bookCheckout" type="date" required></div>
+    </div>
+    <div class="field"><label for="bookGuests">Guests</label><select id="bookGuests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+    <div class="price-summary"><span>Estimated total</span><strong id="estimatedTotal">₹0</strong></div>
+    <p class="small-note">Demo only: this form does not take payment or contact a real hotel.</p>
+    <button class="primary-btn full-btn" type="submit">Confirm demo booking</button>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
