@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RailReserve | Train Reservation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🚆 Rail<span>Reserve</span></div>
+    <nav>
+      <a href="#search">Search Trains</a>
+      <a href="#booking">Book Ticket</a>
+      <a href="#pnr">PNR Status</a>
+      <a href="#admin">Admin</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">YOUR JOURNEY STARTS HERE</p>
+      <h1>Travel smarter.<br><span>Reserve with ease.</span></h1>
+      <p>Search trains, check seats, and manage your journey in one simple place.</p>
+      <a class="primary-link" href="#search">Find a Train →</a>
+    </div>
+    <div class="hero-card">
+      <div class="train-icon">🚄</div>
+      <h3>Easy train booking</h3>
+      <p>Clear routes · Seat availability · Instant demo PNR</p>
+      <div class="route-line"><span>MAS</span><i></i><span> SBC</span></div>
+      <small>Chennai Central → Bengaluru</small>
+    </div>
+  </section>
+
+  <main>
+    <section class="panel" id="search">
+      <div class="section-heading"><div><p class="eyebrow">PLAN YOUR TRIP</p><h2>Search Trains</h2></div><span class="step">01</span></div>
+      <form id="searchForm" class="form-grid">
+        <label>From station<input id="from" required placeholder="e.g. Chennai"></label>
+        <label>To station<input id="to" required placeholder="e.g. Bengaluru"></label>
+        <label>Journey date<input id="journeyDate" type="date" required></label>
+        <label>Class<select id="travelClass"><option>Sleeper</option><option>AC 3 Tier</option><option>AC 2 Tier</option><option>AC First Class</option></select></label>
+        <button class="primary-btn" type="submit">Search Trains</button>
+      </form>
+      <div id="trainResults" class="results empty-state">Enter your route and date, then select Search Trains.</div>
+    </section>
+
+    <section class="panel" id="booking">
+      <div class="section-heading"><div><p class="eyebrow">PASSENGER DETAILS</p><h2>Book a Ticket</h2></div><span class="step">02</span></div>
+      <form id="bookingForm" class="form-grid">
+        <label>Selected train<select id="selectedTrain" required><option value="">Search and select a train first</option></select></label>
+        <label>Passenger name<input id="passengerName" required placeholder="Full name"></label>
+        <label>Age<input id="passengerAge" type="number" min="1" max="120" required placeholder="Age"></label>
+        <label>Gender<select id="gender"><option>Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></label>
+        <label>Mobile number<input id="mobile" type="tel" pattern="[0-9]{10}" required placeholder="10-digit mobile number"></label>
+        <label>Payment mode<select id="paymentMode"><option>Demo online payment</option><option>Pay at counter</option></select></label>
+        <button class="primary-btn" type="submit">Confirm Booking</button>
+      </form>
+      <div id="bookingMessage" class="message" hidden></div>
+      <p class="note">This is an academic demo. It does not process real payments or connect to railway databases.</p>
+    </section>
+
+    <section class="panel" id="pnr">
+      <div class="section-heading"><div><p class="eyebrow">TRACK YOUR RESERVATION</p><h2>PNR Status / Cancel Ticket</h2></div><span class="step">03</span></div>
+      <form id="pnrForm" class="inline-form">
+        <label>Enter PNR number<input id="pnrInput" required placeholder="e.g. 1234567890"></label>
+        <button class="primary-btn" type="submit">Check Status</button>
+      </form>
+      <div id="pnrResult" class="results empty-state">Your booking status will appear here.</div>
+      <form id="cancelForm" class="inline-form cancel-form">
+        <label>Cancel using PNR<input id="cancelPnr" required placeholder="Enter PNR number"></label>
+        <button class="danger-btn" type="submit">Cancel Ticket</button>
+      </form>
+      <div id="cancelMessage" class="message" hidden></div>
+    </section>
+
+    <section class="panel" id="admin">
+      <div class="section-heading"><div><p class="eyebrow">DEMO ADMIN PANEL</p><h2>Train & Booking Overview</h2></div><span class="step">04</span></div>
+      <div class="stats">
+        <div class="stat"><span>Demo trains</span><strong id="trainCount">4</strong></div>
+        <div class="stat"><span>Bookings made</span><strong id="bookingCount">0</strong></div>
+        <div class="stat"><span>Active bookings</span><strong id="activeCount">0</strong></div>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>PNR</th><th>Passenger</th><th>Train</th><th>Route</th><th>Status</th></tr></thead><tbody id="adminRows"><tr><td colspan="5">No bookings yet.</td></tr></tbody></table></div>
+    </section>
+  </main>
+
+  <footer>© 2026 RailReserve · Internet Programming Lab Project · Demo website</footer>
+  <script src="script.js"></script>
+</body>
+</html>
