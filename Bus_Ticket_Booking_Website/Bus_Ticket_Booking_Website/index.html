@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RouteGo | Bus Ticket Booking</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#"><span class="logo-icon">R</span> routego</a>
+  <nav><a href="#search">Find buses</a><a href="#myTickets">My tickets</a><a href="#admin">Admin</a></nav>
+  <button class="nav-button" id="accountBtn">My account ↗</button>
+</header>
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">TRAVEL MORE. WORRY LESS.</span>
+    <h1>Your next journey<br>starts <em>here.</em></h1>
+    <p>Find your route, choose your seat, and keep your travel plans together in one simple place.</p>
+    <a href="#search" class="main-btn">Book a bus <span>→</span></a>
+    <div class="trust"><span>✓ Easy booking</span><span>✓ Seat selection</span><span>✓ Ticket history</span></div>
+  </div>
+  <div class="hero-visual">
+    <div class="sun"></div><div class="road"></div><div class="bus"><div class="bus-window"></div><div class="bus-wheel w1"></div><div class="bus-wheel w2"></div></div>
+    <div class="hill h1"></div><div class="hill h2"></div>
+    <div class="visual-note"><b>✦ Your trip, simplified</b><small>Plan it. Book it. Go.</small></div>
+  </div>
+</section>
+<main>
+<section class="search-wrap" id="search">
+  <div class="search-head"><div><span class="eyebrow">PLAN YOUR RIDE</span><h2>Where are you headed?</h2></div><span class="mini-label">BUS SEARCH</span></div>
+  <form id="searchForm" class="search-form">
+    <div class="field"><label for="from">From</label><select id="from"><option>Chennai</option><option>Coimbatore</option><option>Madurai</option><option>Bengaluru</option><option>Trichy</option><option>Salem</option></select></div>
+    <button type="button" class="swap" id="swapBtn" title="Swap route">⇄</button>
+    <div class="field"><label for="to">To</label><select id="to"><option>Coimbatore</option><option>Chennai</option><option>Madurai</option><option>Bengaluru</option><option>Trichy</option><option>Salem</option></select></div>
+    <div class="field"><label for="travelDate">Journey date</label><input type="date" id="travelDate" required></div>
+    <div class="field"><label for="passengers">Passengers</label><select id="passengers"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+    <button class="main-btn search-btn" type="submit">Search buses →</button>
+  </form>
+</section>
+
+<section class="section" id="results">
+  <div class="section-title"><div><span class="eyebrow">AVAILABLE JOURNEYS</span><h2>Choose your ride</h2></div><span id="resultCount" class="muted">4 buses found</span></div>
+  <div class="filters"><button class="filter active" data-type="All">All buses</button><button class="filter" data-type="AC Sleeper">AC Sleeper</button><button class="filter" data-type="AC Seater">AC Seater</button><button class="filter" data-type="Non-AC">Non-AC</button></div>
+  <div id="busList" class="bus-list"></div>
+  <p id="noResults" class="empty hidden">No buses found for this route. Try another destination.</p>
+</section>
+
+<section class="section tickets-section" id="myTickets">
+  <div class="section-title"><div><span class="eyebrow">YOUR TRAVEL PLANS</span><h2>My tickets</h2></div><span class="muted">Booking history</span></div>
+  <div id="ticketList" class="ticket-list"><div class="empty">Your confirmed demo tickets will appear here.</div></div>
+</section>
+
+<section class="section admin-section" id="admin">
+  <div class="section-title"><div><span class="eyebrow">SYSTEM MANAGEMENT</span><h2>Admin panel</h2></div><span class="mini-label">DEMO</span></div>
+  <p class="muted admin-desc">Add a sample bus route to the available listings. This project stores demo changes in your browser only.</p>
+  <form id="busForm" class="admin-form">
+    <div class="field"><label for="busName">Bus operator</label><input id="busName" placeholder="e.g. Green Line Travels" required></div>
+    <div class="field"><label for="busFrom">From</label><input id="busFrom" placeholder="Chennai" required></div>
+    <div class="field"><label for="busTo">To</label><input id="busTo" placeholder="Salem" required></div>
+    <div class="field"><label for="busTime">Departure</label><input id="busTime" type="time" value="21:00" required></div>
+    <div class="field"><label for="busType">Bus type</label><select id="busType"><option>AC Sleeper</option><option>AC Seater</option><option>Non-AC</option></select></div>
+    <div class="field"><label for="busPrice">Fare (₹)</label><input id="busPrice" type="number" min="100" placeholder="650" required></div>
+    <button class="main-btn" type="submit">Add bus</button>
+  </form>
+</section>
+</main>
+<footer><a class="logo" href="#"><span class="logo-icon">R</span> routego</a><p>Every journey has a beginning.</p><small>Internet Programming Lab project · Demo only; no real ticket or payment is issued.</small></footer>
+
+<dialog id="bookingDialog">
+ <form id="bookingForm" class="dialog-content">
+  <button type="button" class="close" id="closeDialog">×</button>
+  <span class="eyebrow">RESERVE YOUR SEAT</span><h2 id="bookingTitle">Book your bus</h2><p id="bookingMeta" class="muted"></p>
+  <input id="busId" type="hidden">
+  <div class="field"><label for="passengerName">Passenger name</label><input id="passengerName" required placeholder="Full name"></div>
+  <div class="field"><label for="passengerEmail">Email</label><input id="passengerEmail" type="email" required placeholder="you@example.com"></div>
+  <div class="field"><label for="seatSelect">Choose seat</label><select id="seatSelect"></select></div>
+  <div class="price-row"><span>Total fare</span><strong id="totalFare">₹0</strong></div>
+  <p class="tiny">Demo booking only. No payment is collected and no real ticket is generated.</p>
+  <button type="submit" class="main-btn wide">Confirm demo ticket</button>
+ </form>
+</dialog>
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
