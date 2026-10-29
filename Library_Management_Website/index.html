@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">📚 Campus Library</div>
+    <nav><a href="#home">Home</a><a href="#catalog">Book Catalog</a><a href="#account">My Account</a><a href="#contact">Contact</a><button id="adminBtn" class="nav-button">Admin</button></nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR CAMPUS, YOUR LIBRARY</p>
+        <h1>Find your next<br><span>great read.</span></h1>
+        <p>Search the library catalog, explore book details, and keep track of your borrowing in one place.</p>
+        <a class="primary-link" href="#catalog">Explore books →</a>
+      </div>
+      <div class="hero-art" aria-label="Books illustration"><div class="sun"></div><div class="book book-one"></div><div class="book book-two"></div><div class="book book-three"></div><div class="plant">✦</div></div>
+    </section>
+
+    <section class="stats">
+      <div><strong id="bookCount">6</strong><span>Books in catalog</span></div>
+      <div><strong id="availableCount">5</strong><span>Available now</span></div>
+      <div><strong id="borrowCount">1</strong><span>Currently borrowed</span></div>
+    </section>
+
+    <section id="catalog" class="section">
+      <div class="section-heading"><div><p class="eyebrow">DISCOVER</p><h2>Book catalog</h2></div><span class="muted">Browse the collection</span></div>
+      <div class="search-row"><input id="searchInput" type="search" placeholder="Search by title, author, or category…" aria-label="Search books"><select id="categoryFilter" aria-label="Filter by category"><option value="all">All categories</option><option>Technology</option><option>Science</option><option>Literature</option><option>Business</option></select></div>
+      <div id="bookGrid" class="book-grid"></div>
+      <p id="emptyMessage" class="empty hidden">No books match your search.</p>
+    </section>
+
+    <section id="account" class="section account-section">
+      <div class="section-heading"><div><p class="eyebrow">STUDENT AREA</p><h2>My account</h2></div></div>
+      <div class="account-grid">
+        <form id="loginForm" class="panel">
+          <h3>Student login</h3><p class="muted">Demo login for the lab project</p>
+          <label for="studentName">Student name</label><input id="studentName" required placeholder="Enter your name">
+          <label for="studentEmail">Email address</label><input id="studentEmail" type="email" required placeholder="student@example.com">
+          <button class="primary-button" type="submit">Sign in</button>
+          <p id="loginMessage" class="message" role="status"></p>
+        </form>
+        <div class="panel">
+          <h3>My borrowing history</h3><p class="muted">Borrowed books and expected return dates appear here.</p>
+          <div id="historyList" class="history-list"><p class="muted">Sign in to view your demo borrowing history.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div><p class="eyebrow">NEED HELP?</p><h2>Contact the library</h2><p class="muted">Send a question to the library team.</p></div>
+      <form id="contactForm" class="contact-form"><input id="contactName" required placeholder="Your name" aria-label="Your name"><input id="contactEmail" required type="email" placeholder="Email address" aria-label="Email address"><textarea id="contactMessage" required placeholder="How can we help?" aria-label="Message"></textarea><button class="primary-button" type="submit">Send message</button><p id="contactStatus" class="message" role="status"></p></form>
+    </section>
+  </main>
+
+  <footer><span>© 2026 Campus Library</span><span>Internet Programming Lab · Library Management Website</span></footer>
+
+  <dialog id="bookDialog"><button class="close-dialog" id="closeDialog" aria-label="Close">×</button><div id="bookDetails"></div></dialog>
+  <dialog id="adminDialog"><button class="close-dialog" id="closeAdmin" aria-label="Close">×</button><h2>Admin dashboard</h2><p class="muted">Demo inventory management. Changes are stored in this browser only.</p><form id="addBookForm" class="admin-form"><input id="newTitle" required placeholder="Book title"><input id="newAuthor" required placeholder="Author"><select id="newCategory"><option>Technology</option><option>Science</option><option>Literature</option><option>Business</option></select><button class="primary-button">Add book</button></form><div id="adminBookList"></div></dialog>
+  <script src="script.js"></script>
+</body>
+</html>
