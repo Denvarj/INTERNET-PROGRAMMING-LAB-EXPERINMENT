@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SweetCrumbs | Online Cake Ordering</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#">🍰 SweetCrumbs</a>
+  <nav>
+    <a href="#cakes">Cakes</a><a href="#how">How it works</a><a href="#orders">My Orders</a>
+    <button class="cart-button" id="cartBtn">Cart <span id="cartCount">0</span></button>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">MADE WITH LOVE, BAKED FRESH</span>
+    <h1>A little cake.<br><span>A lot of happiness.</span></h1>
+    <p>Find the perfect cake for birthdays, celebrations, and all the sweet moments in between.</p>
+    <a class="primary-link" href="#cakes">Explore cakes ↓</a>
+  </div>
+  <div class="hero-art" aria-label="Decorative cake illustration">
+    <div class="cake-emoji">🎂</div><div class="sparkle s1">✦</div><div class="sparkle s2">✧</div>
+    <div class="hero-note">Freshly baked<br><strong>just for you</strong></div>
+  </div>
+</section>
+<main>
+  <section class="section-head" id="cakes">
+    <div><span class="eyebrow">OUR COLLECTION</span><h2>Choose your sweet treat</h2></div>
+    <div class="filters">
+      <input id="searchInput" type="search" placeholder="Search cakes..." aria-label="Search cakes">
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="All">All occasions</option><option value="Birthday">Birthday</option>
+        <option value="Celebration">Celebration</option><option value="Classic">Classic</option>
+      </select>
+    </div>
+  </section>
+  <div class="cake-grid" id="cakeGrid"></div>
+
+  <section class="how-section" id="how">
+    <span class="eyebrow">SIMPLE & SWEET</span><h2>How ordering works</h2>
+    <div class="steps">
+      <article><span>01</span><h3>Pick your cake</h3><p>Browse flavors and choose your favorite design.</p></article>
+      <article><span>02</span><h3>Make it yours</h3><p>Select a size, add a message, and tell us where to deliver.</p></article>
+      <article><span>03</span><h3>Place your order</h3><p>Review your details and confirm your demo order.</p></article>
+    </div>
+  </section>
+
+  <section class="orders-section" id="orders">
+    <div class="section-head"><div><span class="eyebrow">YOUR ACTIVITY</span><h2>Recent orders</h2></div></div>
+    <div id="ordersList" class="orders-list"><p class="empty">Your orders will appear here after you place one.</p></div>
+  </section>
+</main>
+<footer><span>🍰 SweetCrumbs</span><span>Demo website for an Internet Programming Lab project</span></footer>
+
+<div class="modal-backdrop" id="orderModal" hidden>
+  <div class="modal">
+    <button class="close" id="closeModal" aria-label="Close">×</button>
+    <span class="eyebrow">JUST A FEW DETAILS</span><h2>Customize your cake</h2>
+    <form id="orderForm">
+      <input type="hidden" id="selectedCakeId">
+      <label>Cake <input id="selectedCakeName" readonly></label>
+      <div class="form-row">
+        <label>Size
+          <select id="cakeSize"><option value="Small">Small (0.5 kg)</option><option value="Medium" selected>Medium (1 kg)</option><option value="Large">Large (2 kg)</option></select>
+        </label>
+        <label>Quantity <input id="quantity" type="number" min="1" max="10" value="1" required></label>
+      </div>
+      <label>Message on cake <input id="cakeMessage" maxlength="40" placeholder="e.g. Happy Birthday!"></label>
+      <label>Customer name <input id="customerName" required placeholder="Your full name"></label>
+      <label>Phone number <input id="phone" type="tel" required pattern="[0-9 +()-]{8,16}" placeholder="Your contact number"></label>
+      <label>Delivery address <textarea id="address" rows="2" required placeholder="House / street / city"></textarea></label>
+      <label>Delivery date <input id="deliveryDate" type="date" required></label>
+      <label>Payment method
+        <select id="paymentMethod"><option>Cash on Delivery</option><option>Demo Online Payment</option></select>
+      </label>
+      <div class="total-line"><span>Estimated total</span><strong id="estimatedTotal">₹0</strong></div>
+      <p class="fine-print">This is a front-end demo. No real payment or delivery request is made.</p>
+      <button class="primary-button" type="submit">Confirm demo order</button>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
