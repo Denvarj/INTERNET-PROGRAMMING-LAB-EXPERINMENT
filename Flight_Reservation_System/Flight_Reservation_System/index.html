@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkyBook | Flight Reservation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#">✈ Sky<span>Book</span></a>
+  <nav><a href="#search">Search Flights</a><a href="#myticket">My Ticket</a><a href="#cancel">Cancel Ticket</a><a href="#admin">Admin</a></nav>
+  <a class="nav-btn" href="#search">Book a flight</a>
+</header>
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">FLY YOUR WAY</div>
+    <h1>Your next journey<br>starts <span>up in the sky.</span></h1>
+    <p>Find flights, choose your class, and manage your travel plans with ease.</p>
+    <a class="button light" href="#search">Explore flights ↓</a>
+    <div class="trust"><span>✓ Simple booking</span><span>✓ Clear fare details</span><span>✓ Demo e-ticket</span></div>
+  </div>
+  <div class="flight-art"><div class="sun"></div><div class="cloud cloud1"></div><div class="cloud cloud2"></div><div class="plane">✈</div><div class="ticket-float"><small>YOUR NEXT TRIP</small><strong>Adventure awaits</strong><span>✦ SkyBook Airlines</span></div></div>
+</section>
+<main>
+  <section class="booking-panel" id="search">
+    <div class="section-top"><div><div class="eyebrow">PLAN YOUR TRIP</div><h2>Search available flights</h2></div><span class="number">01</span></div>
+    <form id="searchForm" class="grid-form">
+      <label>From<input id="from" required placeholder="e.g. Chennai"></label>
+      <label>To<input id="to" required placeholder="e.g. Delhi"></label>
+      <label>Departure date<input id="date" type="date" required></label>
+      <label>Travel class<select id="class"><option>Economy</option><option>Premium Economy</option><option>Business</option><option>First Class</option></select></label>
+      <button class="button primary" type="submit">Search Flights →</button>
+    </form>
+    <div id="flightResults" class="results empty">Enter your departure city, destination and date to find demo flights.</div>
+  </section>
+
+  <section class="booking-panel" id="book">
+    <div class="section-top"><div><div class="eyebrow">PASSENGER INFORMATION</div><h2>Book your ticket</h2></div><span class="number">02</span></div>
+    <form id="bookingForm" class="grid-form">
+      <label>Selected flight<select id="selectedFlight" required><option value="">Search and select a flight first</option></select></label>
+      <label>Passenger full name<input id="name" required placeholder="As on ID proof"></label>
+      <label>Email address<input id="email" type="email" required placeholder="you@example.com"></label>
+      <label>Mobile number<input id="mobile" type="tel" pattern="[0-9]{10}" required placeholder="10-digit number"></label>
+      <label>Number of passengers<select id="passengers"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+      <label>Payment mode<select id="payment"><option>Demo online payment</option><option>Pay at airport counter</option></select></label>
+      <button class="button primary" type="submit">Confirm Booking →</button>
+    </form>
+    <div id="bookingMessage" class="message" hidden></div>
+    <p class="note">Academic demonstration only. No real airline booking or payment is performed.</p>
+  </section>
+
+  <section class="booking-panel" id="myticket">
+    <div class="section-top"><div><div class="eyebrow">TRAVEL DETAILS</div><h2>My Ticket / Booking Status</h2></div><span class="number">03</span></div>
+    <form id="ticketForm" class="inline-form"><label>Enter booking reference<input id="refInput" required placeholder="e.g. SB123456"></label><button class="button primary" type="submit">View Ticket</button></form>
+    <div id="ticketResult" class="results empty">Your ticket details will appear here.</div>
+  </section>
+
+  <section class="booking-panel" id="cancel">
+    <div class="section-top"><div><div class="eyebrow">CHANGE OF PLANS?</div><h2>Cancel a ticket</h2></div><span class="number">04</span></div>
+    <form id="cancelForm" class="inline-form"><label>Booking reference<input id="cancelRef" required placeholder="Enter booking reference"></label><button class="button danger" type="submit">Cancel Ticket</button></form>
+    <div id="cancelMessage" class="message" hidden></div>
+  </section>
+
+  <section class="booking-panel" id="admin">
+    <div class="section-top"><div><div class="eyebrow">ADMIN OVERVIEW</div><h2>Flight and booking report</h2></div><span class="number">05</span></div>
+    <div class="stats"><div><small>Demo flights</small><strong id="flightCount">4</strong></div><div><small>Total bookings</small><strong id="bookingCount">0</strong></div><div><small>Active tickets</small><strong id="activeCount">0</strong></div></div>
+    <div class="table-wrap"><table><thead><tr><th>Reference</th><th>Passenger</th><th>Flight</th><th>Route</th><th>Status</th></tr></thead><tbody id="adminRows"><tr><td colspan="5">No bookings yet.</td></tr></tbody></table></div>
+  </section>
+</main>
+<footer><strong>SkyBook</strong> · Internet Programming Lab · Flight Reservation System Demo</footer>
+<script src="script.js"></script>
+</body>
+</html>
